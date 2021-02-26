@@ -1,0 +1,16 @@
+version: '3'
+services:
+  nginx:
+  #  image: mkoppanen/nginx-ssl-preread
+    image: nbmaiti/nginx-stream
+   #  image: nginx:1.18-alpine
+    container_name: nginx-stream_nbm
+    volumes:
+      - ./conf.d/nginx.conf_main:/etc/nginx/nginx.conf
+      - ./conf.d:/etc/nginx/conf.d
+      - ./log/:/var/log/nginx/
+#      - ./proxy/certbot/www:/var/www/certbot
+    ports:
+      - 80:80
+      - 8443:8443
+#      - 8083:443
